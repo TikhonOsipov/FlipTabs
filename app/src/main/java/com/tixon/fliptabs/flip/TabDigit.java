@@ -41,9 +41,9 @@ public class TabDigit extends View implements Runnable {
     long mTime = -1;
     float mElapsedTime = 1000.0f;
 
-    private Tab mTopTab;
+    public Tab mTopTab;
 
-    private Tab mBottomTab;
+    public Tab mBottomTab;
 
     public Tab mMiddleTab;
 
@@ -141,20 +141,21 @@ public class TabDigit extends View implements Runnable {
         mNumberPaint = new Paint();
         mNumberPaint.setAntiAlias(true);
         mNumberPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        mNumberPaint.setColor(Color.parseColor("#ffffff"));
+        mNumberPaint.setColor(Color.parseColor("#eeeeee"));
         mNumberPaint.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "arial.ttf"));
 
         mDividerPaint = new Paint();
         mDividerPaint.setAntiAlias(true);
         mDividerPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mDividerPaint.setColor(Color.WHITE);
-        mDividerPaint.setStrokeWidth(2);
+        mDividerPaint.setStrokeWidth(8);
 
         mBackgroundPaint = new Paint();
         mBackgroundPaint.setAntiAlias(true);
         //mBackgroundPaint.setColor(Color.BLACK);
-        mBackgroundPaint.setShader(new LinearGradient(0, 0, 0, 120,
-                Color.parseColor("#000000"), Color.parseColor("#434343"), Shader.TileMode.MIRROR));
+        mBackgroundPaint.setShader(new LinearGradient(0, 0, 0, 180,
+                //Color.parseColor("#000000"), Color.parseColor("#434343"), Shader.TileMode.MIRROR));
+                Color.parseColor("#434343"), Color.parseColor("#222222"), Shader.TileMode.MIRROR));
     }
 
     private void initTabs() {
@@ -352,17 +353,20 @@ public class TabDigit extends View implements Runnable {
     public void nextBottomTab(){
         mBottomTab.next();
         state = MIDDLE_POSITION;
+        //state = UPPER_POSITION;
     }
 
     public void nextMiddleTab() {
         mMiddleTab.next();
         state = UPPER_POSITION;
+        //state = LOWER_POSITION;
     }
 
     public void nextTopTab() {
         mTopTab.next();
         mTime = -1;
         state = LOWER_POSITION;
+        //state = MIDDLE_POSITION;
     }
 
     public void sync() {

@@ -7,14 +7,105 @@
     tools:context="com.tixon.fliptabs.MainActivity">
 
 
-    <com.tixon.fliptabs.flip.TabDigit
-        xmlns:digit="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/tabDigit1"
-        android:layout_centerInParent="true"
+    <FrameLayout
+        android:background="@drawable/digit_container"
+        android:padding="4dp"
+        android:layout_marginTop="48dp"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        digit:textSize="120sp"
-        digit:cornerSize="4dp"
-        digit:padding="24dp" />
+        android:layout_height="wrap_content">
+        <com.tixon.fliptabs.flip.TabDigit
+            xmlns:digit="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tabDigit1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            digit:textSize="120sp"
+            digit:cornerSize="4dp"
+            digit:padding="32dp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/stop"
+            android:text="Stop"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/bounce"
+                android:text="Bounce"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/linear"
+                android:text="Linear"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/accelerateDecelerate"
+                android:text="Ac/Dec"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/anticipate"
+                android:text="Anticipate"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/anticipateOvershoot"
+                android:text="A/Overshoot"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/overshoot"
+                android:text="Overshoot"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/accelerate"
+                android:text="accelerate"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/decelerate"
+                android:text="decelerate"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/fastOutSlow"
+                android:text="F/Out slow"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
