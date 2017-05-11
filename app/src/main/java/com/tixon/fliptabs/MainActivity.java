@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnticipateInterpolator;
@@ -16,6 +18,7 @@ import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.OvershootInterpolator;
+import android.widget.FrameLayout;
 
 import com.tixon.fliptabs.flip.TabDigit;
 
@@ -30,6 +33,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         final TabDigit digit = (TabDigit) findViewById(R.id.tabDigit1);
         digit.setDividerColor(Color.parseColor("#111111"));
+
+        final FrameLayout container = (FrameLayout) findViewById(R.id.digitContainer1);
+        container.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int maxWidth = digit.mMiddleTab.maxWith();
+                int width = digit.getViewWidth();
+                int padding = (maxWidth - width);
+                ViewGroup.LayoutParams containerParams = container.getLayoutParams();
+                int layoutPadding = getResources().getDimensionPixelSize(R.dimen.digitPadding);
+                containerParams.height = digit.getHeight() + layoutPadding;
+                containerParams.width = maxWidth - padding + layoutPadding;
+                container.setLayoutParams(containerParams);
+                container.invalidate();
+            }
+        });
 
         valueAnimator = ValueAnimator.ofFloat(180.0F, 0.0F);
         valueAnimator.setDuration(1000L);

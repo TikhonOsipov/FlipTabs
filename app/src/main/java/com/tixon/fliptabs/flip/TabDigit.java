@@ -81,6 +81,7 @@ public class TabDigit extends View implements Runnable {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @SuppressWarnings("unused")
     public TabDigit(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs);
@@ -148,13 +149,12 @@ public class TabDigit extends View implements Runnable {
         mDividerPaint.setAntiAlias(true);
         mDividerPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mDividerPaint.setColor(Color.WHITE);
-        mDividerPaint.setStrokeWidth(8);
+        mDividerPaint.setStrokeWidth(6);
 
         mBackgroundPaint = new Paint();
         mBackgroundPaint.setAntiAlias(true);
         //mBackgroundPaint.setColor(Color.BLACK);
         mBackgroundPaint.setShader(new LinearGradient(0, 0, 0, 180,
-                //Color.parseColor("#000000"), Color.parseColor("#434343"), Shader.TileMode.MIRROR));
                 Color.parseColor("#434343"), Color.parseColor("#222222"), Shader.TileMode.MIRROR));
     }
 
@@ -209,6 +209,10 @@ public class TabDigit extends View implements Runnable {
         }
     }
 
+    public int getViewWidth() {
+        return mTextMeasured.width() + mPadding;
+    }
+
     private void setupProjectionMatrix() {
         mProjectionMatrix.reset();
         int centerY = getHeight() / 2;
@@ -231,7 +235,9 @@ public class TabDigit extends View implements Runnable {
     private void drawDivider(Canvas canvas) {
         canvas.save();
         canvas.concat(mProjectionMatrix);
-        canvas.drawLine(-canvas.getWidth() / 2, 0, canvas.getWidth() / 2, 0, mDividerPaint);
+        int width = mTextMeasured.width() + mPadding - mCornerSize;
+        //canvas.drawLine(-canvas.getWidth() / 2, 0, canvas.getWidth() / 2, 0, mDividerPaint);
+        canvas.drawLine(-width / 2, 0, width / 2, 0, mDividerPaint);
         canvas.restore();
     }
 
