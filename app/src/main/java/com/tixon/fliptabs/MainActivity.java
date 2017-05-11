@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,6 +22,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 
 import com.tixon.fliptabs.flip.TabDigit;
+import com.tixon.fliptabs.flip.TabDigitView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private int index = 0;
@@ -109,6 +111,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setButtonsEnabled(true);
             }
         });
+
+        final TabDigitView flipView = (TabDigitView) findViewById(R.id.flipView);
+        flipView.setValueStart(5);
+        flipView.setValueMoveTo(9);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                flipView.flip();
+            }
+        }, 2000L);
     }
 
     @Override

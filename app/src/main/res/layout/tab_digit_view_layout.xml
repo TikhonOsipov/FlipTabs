@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:id="@+id/digitContainer"
+        android:background="@drawable/digit_container"
+        android:padding="4dp"
+        android:layout_gravity="center"
+        android:layout_width="8dp"
+        android:layout_height="8dp" />
+    <com.tixon.fliptabs.flip.TabDigit
+        xmlns:digit="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tabDigit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        digit:textSize="120sp"
+        digit:cornerSize="4dp"
+        digit:padding="32dp" />
+</FrameLayout>
